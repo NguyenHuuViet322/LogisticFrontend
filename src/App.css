@@ -1,0 +1,44 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.col {
+  height: 25vw;
+}
+
+.col:first-child {
+  margin: 0;
+  padding: 0;
+  background-color: #f2f4f7;
+}
+
+table {
+  background-color: #f2f4f7;
+}
+
+.action-icon {
+  justify-self: flex-end;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+}
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+.tab, .container {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+button[data-active="true"] {
+  background-color: white;
+}
