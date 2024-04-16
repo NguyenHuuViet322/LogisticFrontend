@@ -1,0 +1,12 @@
+[
+    { "Id": "1", "Type": "Drone 1", "Battery": "2636", "Condition": "New" },
+    { "Id": "2", "Type": "Drone 2", "Battery": "4699", "Condition": "Used" },
+    { "Id": "3", "Type": "Drone 3", "Battery": "3085", "Condition": "Used" },
+    { "Id": "4", "Type": "Drone 4", "Battery": "1985", "Condition": "Used" },
+    { "Id": "5", "Type": "Drone 5", "Battery": "2769", "Condition": "New" },
+    { "Id": "6", "Type": "Drone 6", "Battery": "3008", "Condition": "Used" },
+    { "Id": "7", "Type": "Drone 7", "Battery": "1707", "Condition": "Refurbished" },
+    { "Id": "8", "Type": "Drone 8", "Battery": "3995", "Condition": "New" },
+    { "Id": "9", "Type": "Drone 9", "Battery": "1701", "Condition": "Refurbished" },
+    { "Id": "10", "Type": "Drone 10", "Battery": "2802", "Condition": "New" }
+  ]

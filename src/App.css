@@ -35,10 +35,25 @@ table {
   width: 100%;
 }
 
-table {
+thead {
   width: 100%;
+  background-color: #f2f4f7!important;
 }
 
 button[data-active="true"] {
   background-color: white;
+}
+
+.custom-number {
+  color: rgb(5, 138, 210);
+  font-weight: bold; 
+  margin-left: 1px; 
+}
+
+.methodIcon {
+  transition: 0.2s;
+}
+
+.methodIcon:hover {
+  color: blue;
 }
