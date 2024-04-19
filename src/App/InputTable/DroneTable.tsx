@@ -40,7 +40,6 @@ function DroneTable({ onDroneChange }: DroneProps) {
     );
 
     useEffect(() => {
-        console.log(Object.keys(rowSelection));
         setDrone(Object.keys(rowSelection));
         onDroneChange(Object.keys(rowSelection));
     }, [rowSelection]);

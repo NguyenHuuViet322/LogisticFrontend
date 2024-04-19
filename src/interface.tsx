@@ -19,6 +19,11 @@ export interface Customer {
     Distance: string;
 }
 
+export interface Result {
+    Id: string;
+    Journey: string;
+}
+
 export interface Drone {
     Id: string;
     Type: string;
@@ -39,6 +44,7 @@ export interface Feature {
 }
 
 export interface MapProps {
+    result: any;
     customerList: string[];
 }
 
@@ -46,6 +52,7 @@ export interface droneList {
     drone: string[];
     selected: string;
     onSelectedDroneChange: (drone: string) => void;
+    onNumDroneChange: (drone: string[])=>void;
 }
 
 export interface CustomerProps {

@@ -51,6 +51,7 @@ import InputList from "./InputTable/InputList";
 function InputTable({
     onCustomerChange,
     onSelectedDroneChange,
+    onNumDroneChange,
 }: CustomerProps & droneList) {
     const [drone, setDrone] = useState<string[]>([]);
     const [seletedrone, setSelectedDrone] = useState<string>();
@@ -60,6 +61,7 @@ function InputTable({
     };
     const handlerDroneChange = (updatedDrone: string[]) => {
         setDrone(updatedDrone);
+        onNumDroneChange(updatedDrone);
     };
     const handlerSelectedDroneChange = (updatedSelectedDrone: string) => {
         onSelectedDroneChange(updatedSelectedDrone);

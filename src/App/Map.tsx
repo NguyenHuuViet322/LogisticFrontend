@@ -25,6 +25,7 @@ import base from "../assets/base.png";
 import customer from "../assets/customer.png";
 import data from "../json/dataCoor.json";
 import journey from "../json/result.json";
+
 import { colors } from "../interface";
 import L from "leaflet";
 import { Customer, droneList, Feature, MapProps } from "../interface";
@@ -48,6 +49,7 @@ const baseCoor = [41.849023, -71.438477];
 const list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 function Map({
+    result,
     customerList,
     isOptimize,
     selected,
@@ -66,16 +68,20 @@ function Map({
 
     const line = [];
 
-    if (isOptimize) {
-        for (var i = 0; i <= 10; i++) {
-            var array = journey
-                .filter((item) => item.Id == i.toString())[0]
+    if (isOptimize && result != null) {
+        console.log(result)
+        for (var i = 0; i < result.length; i++) {
+            var stt=0;
+            var array = result
+                .filter((item:any) => item.Id == i.toString())[0]
                 .Journey.split(" ");
+            array.pop();
             if (i != 0) {
                 const text = L.divIcon({
-                    html: `<div style="background-color: ${colors[i]};margin-top:-10px; margin-left:-8px; border-radius: 50%; width: 25px; height: 25px; display: flex; justify-content: center; align-items: center;"><span style="color: white;">12</span></div>`,
+                    html: `<div style="background-color: ${colors[i]};margin-top:-4px; margin-left:-5px; border-radius: 50%; width: 20px; height: 20px; display: flex; justify-content: center; align-items: center;"><span style="color: white;"></span></div>`,
                 });
-                line[i] = array.map((id) => (
+                stt++;
+                line[i] = array.map((id:any, index:number) => (
                     <>
                         <Polyline
                             pathOptions={{ color: colors[i], weight: 2 }}
@@ -88,14 +94,12 @@ function Map({
                             ]}
                         >
                             <Marker
-                                icon={text}
+                                icon={L.divIcon({
+                                    html: `<div style="background-color: ${colors[i]};margin-top:-4px; margin-left:-5px; border-radius: 50%; width: 20px; height: 20px; display: flex; justify-content: center; align-items: center;"><span style="color: white;">${index+1}</span></div>`,
+                                })}
                                 position={[
-                                    (data.filter((item) => item.Id == id)[0].y +
-                                        40.75) /
-                                        2,
-                                    (data.filter((item) => item.Id == id)[0].x -
-                                        73.92) /
-                                        2,
+                                    (data.filter((item) => item.Id == id)[0].y + baseCoor[0]) / 2,
+                                    (data.filter((item) => item.Id == id)[0].x + baseCoor[1]) / 2,
                                 ]}
                             ></Marker>
                         </Polyline>
@@ -105,10 +109,12 @@ function Map({
                 var roadhistory = [baseCoor];
                 array.map((id) => {
                     console.log(id);
-                    roadhistory.push([
-                        data.filter((item) => item.Id == id)[0].y,
-                        data.filter((item) => item.Id == id)[0].x,
-                    ]);
+                    if (id != "0") {
+                        roadhistory.push([
+                            data.filter((item) => item.Id == id)[0].y,
+                            data.filter((item) => item.Id == id)[0].x,
+                        ]);
+                    }
                 });
                 line[i] = (
                     <Polyline
