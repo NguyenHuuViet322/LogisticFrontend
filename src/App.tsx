@@ -128,7 +128,7 @@ function App() {
                         optimizeOnClick={function (isStarted: boolean): void {
                             throw new Error("Function not implemented.");
                         }}
-                        drone={[]}
+                        drone={drone}
                         onSelectedDroneChange={function (drone: string): void {
                             throw new Error("Function not implemented.");
                         }}

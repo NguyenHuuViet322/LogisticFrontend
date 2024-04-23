@@ -25,7 +25,6 @@ import base from "../assets/base.png";
 import customer from "../assets/customer.png";
 import data from "../json/dataCoor.json";
 import journey from "../json/result.json";
-
 import { colors } from "../interface";
 import L from "leaflet";
 import { Customer, droneList, Feature, MapProps } from "../interface";
@@ -49,6 +48,7 @@ const baseCoor = [41.849023, -71.438477];
 const list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 function Map({
+    drone,
     result,
     customerList,
     isOptimize,
@@ -73,7 +73,7 @@ function Map({
         for (var i = 0; i < result.length; i++) {
             var stt=0;
             var array = result
-                .filter((item:any) => item.Id == i.toString())[0]
+                .filter((item) => item.Id == i.toString())[0]
                 .Journey.split(" ");
             array.pop();
             if (i != 0) {
@@ -81,9 +81,9 @@ function Map({
                     html: `<div style="background-color: ${colors[i]};margin-top:-4px; margin-left:-5px; border-radius: 50%; width: 20px; height: 20px; display: flex; justify-content: center; align-items: center;"><span style="color: white;"></span></div>`,
                 });
                 stt++;
-                line[i] = array.map((id:any, index:number) => (
+                line[parseInt(drone[i-1])] = array.filter((item) => item > '0' && item <= '9').map((id, index) => (
                     <>
-                        <Polyline
+                        <Polyline className="polyline"
                             pathOptions={{ color: colors[i], weight: 2 }}
                             positions={[
                                 [41.849023, -71.438477],
@@ -102,7 +102,7 @@ function Map({
                                     (data.filter((item) => item.Id == id)[0].x + baseCoor[1]) / 2,
                                 ]}
                             ></Marker>
-                        </Polyline>
+                        </Polyline>  
                     </>
                 ));
             } else {
@@ -117,7 +117,7 @@ function Map({
                     }
                 });
                 line[i] = (
-                    <Polyline
+                    <Polyline className="polyline"
                         pathOptions={{ color: colors[i], weight: 2 }}
                         positions={roadhistory}
                     />

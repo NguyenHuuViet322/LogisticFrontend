@@ -58,3 +58,25 @@ button[data-active="true"] {
 .methodIcon:hover {
     color: blue;
 }
+
+.polyline {
+
+}
+
+.polyline {
+	stroke-dasharray: 100;
+    animation: dash 5s linear infinite;
+	stroke-width: 3;
+}
+
+.polyline {
+	fill: none;
+	stroke-dasharray: 20 10; /* draws a 10px dash line with a 16px gap between */
+	stroke-width: 3; /* make the dashed line slightly bigger than the one it's covering */
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -300;
+  }
+}
